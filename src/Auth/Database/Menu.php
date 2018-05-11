@@ -64,9 +64,8 @@ class Menu extends Model
     public function allNodes() : array
     {
         $orderColumn = DB::getQueryGrammar()->wrap($this->orderColumn);
-        $byOrder = $orderColumn.' = 0,'.$orderColumn;
-
-        return static::with('roles')->orderByRaw($byOrder)->get()->toArray();
+        
+        return static::with('roles')->orderByRaw($orderColumn)->get()->toArray();
     }
 
     /**
